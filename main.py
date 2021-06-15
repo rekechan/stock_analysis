@@ -49,8 +49,11 @@ df_1 = read_gsheet(st.secrets["sheeturl_1"])
 #df_1 = read_gsheet()
 df_2 = read_gsheet(st.secrets["sheeturl_2"])
 #df_2 = read_gsheet()
+df_3 = read_gsheet(st.secrets["sheeturl_3"])
+#df_3 = read_gsheet()
 
 st.title("株解析bot")
 
 view_df_at_st(df_1,"SBI/みんかぶスクレイピング")
 view_df_at_st(df_2,"過去2週間上昇し続けている株")
+view_df_at_st(df_3,"明日売るべき株")
