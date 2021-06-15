@@ -30,10 +30,11 @@ def view_df_at_st(df,name):
                 price3 = df["個人投資家予想株価"][i]
                 price4 = df["理論株価"][i]
 
-                link = f'[{stockcode}](https://s.kabutan.jp/stocks/{stockcode}/app_launchers/sbihyperkabu/)'
+                sbilink = f'[SBI証券APP](https://s.kabutan.jp/stocks/{stockcode}/app_launchers/sbihyperkabu/)'
+                minkabulink = f'[みんかぶ](https://minkabu.jp/stock/{stockcode})'
                 
-                if st.checkbox(f"{stockname}　@{name}",value=True):
-                    st.markdown(f"{link}", unsafe_allow_html=True)
+                if st.checkbox(f"{stockcode}：{stockname}　@{name}",value=True):
+                    st.markdown(f"{sbilink}　/　{minkabulink}", unsafe_allow_html=True)
                     st.write(f"{title}{weather}。")
                     st.write(f"現在株価　　　： {price0} 円")
                     st.write(f"目標株価　　　： {price1} 倍")
@@ -48,9 +49,7 @@ def view_df_at_st(df,name):
 df_1 = read_gsheet(st.secrets["sheeturl_1"])
 #df_1 = read_gsheet()
 df_2 = read_gsheet(st.secrets["sheeturl_2"])
-#df_2 = read_gsheet()
 df_3 = read_gsheet(st.secrets["sheeturl_3"])
-#df_3 = read_gsheet()
 
 st.title("株解析bot")
 
