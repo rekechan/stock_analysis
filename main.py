@@ -55,4 +55,24 @@ st.title("株解析bot")
 
 view_df_at_st(df_1,"SBI/みんかぶスクレイピング")
 view_df_at_st(df_2,"過去2週間上昇し続けている株")
-view_df_at_st(df_3,"明日売るべき株")
+
+if st.checkbox("明日売るべき株"):
+        if df_3.empty:
+            st.write("該当する株はありませんでした。")
+        else:
+            day = df_3["売り指示日"][0]
+            st.write(f"{day} の解析結果")
+
+            for i in range(len(df_3)):
+                stockname = df_3["stockname"][i]
+                stockcode = df_3["stockcode"][i]
+                purchase_order_date = df_3["買い指示日"][i]
+
+                sbilink = f'[SBI証券APP](https://s.kabutan.jp/stocks/{stockcode}/app_launchers/sbihyperkabu/)'
+                minkabulink = f'[みんかぶ](https://minkabu.jp/stock/{stockcode})'
+                
+                if st.checkbox(f"{stockcode}：{stockname}　@明日売るべき株",value=True):
+                    st.markdown(f"{sbilink}　/　{minkabulink}", unsafe_allow_html=True)
+                    st.write(f"購入指示日　　： {purchase_order_date}")
+                st.write("")
+    st.write("")
