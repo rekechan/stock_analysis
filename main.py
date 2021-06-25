@@ -29,6 +29,9 @@ def view_df_at_st(df,name):
                 price2 = df["アナリスト予想株価"][i]
                 price3 = df["個人投資家予想株価"][i]
                 price4 = df["理論株価"][i]
+                pbr = df["PBR"]
+                per = df["PER(調整後)"]
+                psr = df["PSR"]
 
                 sbilink = f'[SBI証券APP](https://s.kabutan.jp/stocks/{stockcode}/app_launchers/sbihyperkabu/)'
                 minkabulink = f'[みんかぶ](https://minkabu.jp/stock/{stockcode})'
@@ -36,9 +39,9 @@ def view_df_at_st(df,name):
                 if st.checkbox(f"{stockcode}：{stockname}　@{name}",value=True):
                     st.markdown(f"{sbilink}　/　{minkabulink}", unsafe_allow_html=True)
                     st.write(f"{title}{weather}。")
-                    st.write(f"現在株価　　　： {price0} 円")
-                    st.write(f"目標株価　　　： {price1} 倍")
-                    st.write(f"アナリスト予想： {price2} 倍")
+                    st.write(f"現在株価　　　： {price0} 円  PBR：{pbr}")
+                    st.write(f"目標株価　　　： {price1} 倍  PER：{per}")
+                    st.write(f"アナリスト予想： {price2} 倍  PSR：{psr}")
                     st.write(f"個人投資家予想： {price3} 倍")
                     st.write(f"理論株価　　　： {price4} 倍")
                 st.write("")
@@ -53,8 +56,8 @@ df_3 = read_gsheet(st.secrets["sheeturl_3"])
 
 st.title("株解析bot")
 
-view_df_at_st(df_1,"SBI/みんかぶスクレイピング")
-view_df_at_st(df_2,"過去2週間上昇し続けている株")
+view_df_at_st(df_1,"SBI/みんかぶ")
+view_df_at_st(df_2,"2週間上昇株")
 
 if st.checkbox("明日売るべき株"):
     if df_3.empty:
