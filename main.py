@@ -29,9 +29,9 @@ def view_df_at_st(df,name):
                 price2 = df["アナリスト予想株価"][i]
                 price3 = df["個人投資家予想株価"][i]
                 price4 = df["理論株価"][i]
-                pbr = df["PBR"]
-                per = df["PER(調整後)"]
-                psr = df["PSR"]
+                pbr = df["PBR"][i]
+                per = df["PER(調整後)"][i]
+                psr = df["PSR"][i]
 
                 sbilink = f'[SBI証券APP](https://s.kabutan.jp/stocks/{stockcode}/app_launchers/sbihyperkabu/)'
                 minkabulink = f'[みんかぶ](https://minkabu.jp/stock/{stockcode})'
