@@ -39,11 +39,15 @@ def view_df_at_st(df,name):
                 if st.checkbox(f"{stockcode}：{stockname}　@{name}",value=True):
                     st.markdown(f"{sbilink}　/　{minkabulink}", unsafe_allow_html=True)
                     st.write(f"{title}{weather}。")
-                    st.write(f"現在株価　　　： {price0} 円  PBR：{pbr}")
-                    st.write(f"目標株価　　　： {price1} 倍  PER：{per}")
-                    st.write(f"アナリスト予想： {price2} 倍  PSR：{psr}")
+                    st.write(f"現在株価　　　： {price0} 円")
+                    st.write(f"目標株価　　　： {price1} 倍")
+                    st.write(f"アナリスト予想： {price2} 倍")
                     st.write(f"個人投資家予想： {price3} 倍")
                     st.write(f"理論株価　　　： {price4} 倍")
+                    st.write(f"PBR：{pbr}")
+                    st.write(f"PER：{per}")
+                    st.write(f"PSR：{psr}")
+
                 st.write("")
     st.write("")
 
